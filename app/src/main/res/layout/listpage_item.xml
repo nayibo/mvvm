@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:onViewAttachedToWindow="@{vm::onViewAttachedToWindow}"
         android:onViewDetachedFromWindow="@{vm::onViewDetachedFromWindow}"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:onClick="@{vm::selectItem}">
 
         <TextView
@@ -23,7 +23,13 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:textSize="20sp"
-            android:text="@{vm.name}" />
+            android:text="@{vm.name}"
+            android:textSize="20sp" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:actualImageScaleType="fitCenter"
+            app:imageUrl="@{vm.imageUrl}" />
     </LinearLayout>
 </layout>

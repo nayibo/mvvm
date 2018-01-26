@@ -11,9 +11,13 @@ import com.example.nayibo.mvvm.base.BaseViewModel;
 
 public class ListPageItemViewModel extends BaseViewModel {
     public final ObservableField<String> name = new ObservableField<>();
+    public final ObservableField<String> imageUrl = new ObservableField<>();
+    public final ObservableField<String> loResImageUrl = new ObservableField<>();
 
     public ListPageItemViewModel(ListModel model) {
         name.set(model.getName());
+        imageUrl.set(model.getImageUrl());
+        loResImageUrl.set(model.getLoResImageUrl());
     }
 
     public void selectItem() {
