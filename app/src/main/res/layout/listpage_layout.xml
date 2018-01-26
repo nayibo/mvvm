@@ -6,6 +6,8 @@
 
         <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
 
+        <import type="com.example.nayibo.mvvm.list.ListItemBinding" />
+
         <variable
             name="vm"
             type="com.example.nayibo.mvvm.list.ListViewModel" />
@@ -22,6 +24,9 @@
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="@{LayoutManagers.linear()}" />
+            app:itemBinding="@{ListItemBinding.get()}"
+            app:items="@{vm.items}"
+            app:layoutManager="@{LayoutManagers.linear()}"
+            app:onItemBound="@{vm::onItemBound}" />
     </RelativeLayout>
 </layout>
