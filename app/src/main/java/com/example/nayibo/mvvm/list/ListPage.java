@@ -1,5 +1,6 @@
 package com.example.nayibo.mvvm.list;
 
+import com.example.nayibo.mvvm.R;
 import com.example.nayibo.mvvm.base.BaseUI;
 import com.example.nayibo.mvvm.base.MvvmComponent;
 import com.example.nayibo.mvvm.base.ViewModel;
@@ -15,7 +16,7 @@ public class ListPage extends BaseUI implements MvvmComponent {
 
     @Override
     public int getLayoutResID() {
-        return 0;
+        return R.layout.listpage_layout;
     }
 
     @Override

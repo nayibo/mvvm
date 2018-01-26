@@ -1,6 +1,7 @@
 package com.example.nayibo.mvvm.main;
 
 import android.databinding.ObservableField;
+import android.util.Log;
 
 import com.example.nayibo.mvvm.base.BaseViewModel;
 import com.example.nayibo.mvvm.base.MvvmComponent;
@@ -31,6 +32,7 @@ public class MainViewModel extends BaseViewModel {
 
     @Subscribe
     public void onMessageEvent(MvvmComponent component) {
+        Log.d("nayibo", "onMessageEvent： " + component.toString());
         mainComponent.set(component);
     }
 }
