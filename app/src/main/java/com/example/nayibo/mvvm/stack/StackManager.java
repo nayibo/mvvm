@@ -11,28 +11,67 @@ import java.util.ArrayList;
  */
 
 public class StackManager {
+    private static StackManager mInstance;
     private ArrayList<BaseUI> mUIList = new ArrayList<>();
 
-    public void addToStack(BaseUI ui) {
-        mUIList.add(ui);
+    private StackManager() {
+
     }
 
-    public void finish() {
-        if (mUIList.size() > 0) {
-            mUIList.remove(mUIList.size() - 1);
+    public static StackManager getInstance() {
+        if (mInstance == null) {
+            mInstance = new StackManager();
         }
+        return mInstance;
+    }
 
-        if (mUIList.size() > 0) {
-            gotoUI(mUIList.get(mUIList.size() - 1));
+    public void addToStack(BaseUI ui, StackAction type) {
+        switch (type) {
+            case ADD:
+                push(ui);
+                break;
+            case REPLACE_TOP:
+                pop();
+                push(ui);
+                break;
+            default:
         }
+    }
+
+    public boolean back() {
+        boolean success = false;
+        if (mUIList.size() > 1) {
+            pop();
+            gotoUI(mUIList.get(mUIList.size() - 1));
+            success = true;
+        }
+        return success;
     }
 
     public void gotoUI(BaseUI ui) {
         EventBus.getDefault().post(ui);
     }
 
-    public void startNewUI(BaseUI ui) {
-        addToStack(ui);
+    public void startNewUI(BaseUI ui, StackAction type) {
+        addToStack(ui, type);
         gotoUI(ui);
+    }
+
+    public void pop() {
+        if (mUIList.size() > 0) {
+            mUIList.remove(mUIList.size() - 1);
+        }
+    }
+
+    public void push(BaseUI ui) {
+        mUIList.add(ui);
+    }
+
+    public boolean isEmpty() {
+        return mUIList.size() == 0;
+    }
+
+    public int size() {
+        return mUIList.size();
     }
 }

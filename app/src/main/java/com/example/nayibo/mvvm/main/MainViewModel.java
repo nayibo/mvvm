@@ -6,6 +6,8 @@ import android.util.Log;
 import com.example.nayibo.mvvm.base.BaseViewModel;
 import com.example.nayibo.mvvm.base.MvvmComponent;
 import com.example.nayibo.mvvm.homepage.Homepage;
+import com.example.nayibo.mvvm.stack.StackAction;
+import com.example.nayibo.mvvm.stack.StackManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -21,7 +23,8 @@ public class MainViewModel extends BaseViewModel {
     public void onAttach() {
         super.onAttach();
         EventBus.getDefault().register(this);
-        mainComponent.set(new Homepage());
+//        mainComponent.set(new Homepage());
+        StackManager.getInstance().startNewUI(new Homepage(), StackAction.ADD);
     }
 
     @Override

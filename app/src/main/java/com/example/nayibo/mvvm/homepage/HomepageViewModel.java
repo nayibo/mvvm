@@ -5,9 +5,9 @@ import android.util.Log;
 
 import com.example.nayibo.mvvm.base.BaseViewModel;
 import com.example.nayibo.mvvm.list.ListPage;
+import com.example.nayibo.mvvm.stack.StackAction;
+import com.example.nayibo.mvvm.stack.StackManager;
 import com.example.nayibo.retrofit.RetrofitHelper;
-
-import org.greenrobot.eventbus.EventBus;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +45,6 @@ public class HomepageViewModel extends BaseViewModel {
     }
 
     public void goList() {
-        Log.d("nayibo", "onclick");
-        EventBus.getDefault().post(new ListPage());
+        StackManager.getInstance().startNewUI(new ListPage(), StackAction.ADD);
     }
 }

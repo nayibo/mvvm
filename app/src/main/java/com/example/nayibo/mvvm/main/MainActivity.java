@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.example.nayibo.mvvm.BR;
 import com.example.nayibo.mvvm.R;
+import com.example.nayibo.mvvm.stack.StackManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,5 +20,12 @@ public class MainActivity extends AppCompatActivity {
         vm = new MainViewModel();
         binding.setVariable(BR.vm, vm);
         binding.executePendingBindings();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!StackManager.getInstance().back()) {
+            super.onBackPressed();
+        }
     }
 }
